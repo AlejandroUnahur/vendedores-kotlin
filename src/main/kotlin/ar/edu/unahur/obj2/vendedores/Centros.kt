@@ -2,7 +2,7 @@ package ar.edu.unahur.obj2.vendedores
 
 import java.lang.Exception
 
-class Centros(val ciudad: Ciudad) {
+class Centro(val ciudad: Ciudad) {
     val vendedores = mutableListOf<Vendedor>()
 
     fun agregarVendedor(vendedor: Vendedor) {
