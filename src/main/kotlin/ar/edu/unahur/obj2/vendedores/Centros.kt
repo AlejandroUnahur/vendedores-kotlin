@@ -16,10 +16,8 @@ class Centro(val ciudad: Ciudad) {
 
     fun puedeCubrir(ciudad: Ciudad) = vendedores.any { it.puedeTrabajarEn(ciudad) }
 
-    fun vendedoresGenericos() = vendedores.filter { it.otrasCertificaciones() >= 1 }
+    fun vendedoresGenericos() = vendedores.filter { it.esGenerico()}
 
-    fun esRobusto() = this.vendedoresFirmes() >= 3
-
-    fun vendedoresFirmes() = vendedores.count { it.esFirme() }
+    fun esRobusto() = vendedores.filter {it.esFirme()}.size >= 3
 
 }

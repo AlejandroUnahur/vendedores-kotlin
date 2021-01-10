@@ -26,6 +26,8 @@ abstract class Vendedor {
 
   abstract fun esInfluyente(): Boolean
 
+  fun esGenerico() = this.otrasCertificaciones() >= 1
+
   fun certificacionesDeProducto() = certificaciones.count { it.esDeProducto }
 
   fun otrasCertificaciones() = certificaciones.count { !it.esDeProducto }
@@ -59,7 +61,7 @@ class ComercioCorresponsal(val ciudades: List<Ciudad>) : Vendedor() {
     return ciudades.contains(ciudad)
   }
 
-  override fun esInfluyente() = ciudades.size > 5 || this.tieneProvinciasConSucursales()
+  override fun esInfluyente() = ciudades.toSet().size >= 5 || this.tieneProvinciasConSucursales()
 
   fun tieneProvinciasConSucursales() = this.provincias().size >= 3
 
